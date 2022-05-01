@@ -6,6 +6,9 @@ const Stack = createNativeStackNavigator();
 
 import DetailPage from './DetailPage';
 import HomePage from './HomePage';
+import ChatListPage from './ChatListPage';
+
+
 
 const AppRoot = () => {
   return (
@@ -13,6 +16,7 @@ const AppRoot = () => {
       <Stack.Navigator>
         <Stack.Screen name='Home' component={HomePage} options={{ title: 'Welcome' }} />
         <Stack.Screen name='Detail' component={DetailPage} />
+        <Stack.Screen name='ChatList' component={ChatListPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
