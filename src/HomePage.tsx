@@ -1,9 +1,16 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
-const HomePage = () => {
+// props 如何定义类型
+const HomePage = (props) => {
   return (
-    <Text>HomePage</Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>HomePage</Text>
+      <Button 
+        title='Go to Details'
+        onPress={ () => props.navigation.navigate('Detail') }
+      />
+    </View>
   );
 };
 

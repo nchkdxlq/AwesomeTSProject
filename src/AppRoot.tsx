@@ -11,7 +11,7 @@ const AppRoot = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen  name='Home' component={HomePage} options={{ title: 'Welcome' }} />
+        <Stack.Screen name='Home' component={HomePage} options={{ title: 'Welcome' }} />
         <Stack.Screen name='Detail' component={DetailPage} />
       </Stack.Navigator>
     </NavigationContainer>

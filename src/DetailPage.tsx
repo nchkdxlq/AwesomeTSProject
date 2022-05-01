@@ -1,9 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
+import { View, Text } from "react-native";
 
 const DetailPage = () => {
   return (
-    <Text>Detail Page</Text>
+    <View style={ { flex: 1, alignItems: 'center', justifyContent: 'center'} }>
+      <Text>Detail Page</Text>
+    </View>
   );
 }
 
