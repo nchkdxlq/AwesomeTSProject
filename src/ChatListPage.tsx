@@ -14,7 +14,7 @@ import { Chat } from "./Chat/Chat"
 const chatList: Chat[] = [
   {
     identifier: 'zhangsan',
-    name: '张三',
+    name: '张三ListRenderItemInfo',
     preview: 'OK, I will do it.'
   },
   {
@@ -27,6 +27,11 @@ const chatList: Chat[] = [
     name: '王五',
     preview: 'OK, I will do it.'
   },
+  {
+    identifier: 'fdfae709-3c6d-4d24-9ffc-e687174fcf0c',
+    name: '使用 Flexbox 布局 - Flexbox 可以在不同屏幕尺寸上提供一致的布局结构',
+    preview: 'OK, I will do it.'
+  },
 ];
 
 
@@ -37,7 +42,7 @@ const ChatRenderItem = ({ item }: ListRenderItemInfo<Chat>) => {
       <Image style={styles.avatar} source={avatar}/>
       <View style={styles.content}>
         <View style={styles.contentTop}>
-          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.name} numberOfLines={1}>{item.name}</Text>
           <Text style={styles.time}>{'14:28'}</Text>
         </View>
         <Text style={styles.preview}>{item.preview}</Text>
@@ -100,6 +105,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
     backgroundColor: '#00ff00',
+    flexShrink: 1, // 在主轴上, 子组件的总宽度超过容器的最大宽度时, 压缩子组件的比例.
+    flexGrow: 1,
   },
 
   time: {
