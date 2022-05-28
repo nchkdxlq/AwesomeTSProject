@@ -14,6 +14,10 @@ const HomePage = (props: any) => {
         title='Go to Chat List'
         onPress={ () => props.navigation.navigate('ChatList') }
       />
+      <Button
+        title='Event'
+        onPress={ () => props.navigation.navigate('Event') }
+      />
     </View>
   );
 };
