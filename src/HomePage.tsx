@@ -18,6 +18,10 @@ const HomePage = (props: any) => {
         title='Event'
         onPress={ () => props.navigation.navigate('Event') }
       />
+      <Button
+        title='User Profile'
+        onPress={ () => props.navigation.navigate('UserProfile') }
+      />
     </View>
   );
 };

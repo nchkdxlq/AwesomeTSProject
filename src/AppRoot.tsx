@@ -8,6 +8,7 @@ import DetailPage from './DetailPage';
 import HomePage from './HomePage';
 import ChatListPage from './ChatListPage';
 import NativeRNEventPage from './NativeRNEventPage';
+import UserProfile from './UserProfile/UserProfile';
 
 
 
@@ -19,6 +20,7 @@ const AppRoot = () => {
         <Stack.Screen name='Detail' component={DetailPage} />
         <Stack.Screen name='ChatList' component={ChatListPage} />
         <Stack.Screen name='Event' component={NativeRNEventPage} />
+        <Stack.Screen name='UserProfile' component={UserProfile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
