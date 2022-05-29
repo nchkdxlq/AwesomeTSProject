@@ -6,6 +6,10 @@
 
 #import <React/RCTAppSetupUtils.h>
 
+#import "NativeModuleToRNBridge.h"
+#import "UserModule.h"
+
+
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -29,9 +33,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  RCTAppSetupPrepareApp(application);
-
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  [NativeModuleToRNBridge setupBridgeWithApplication:application launchoptions:launchOptions];
 
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook::react::ContextContainer const>();
@@ -41,8 +43,7 @@
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
 
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"AwesomeTSProject", nil);
-
+  UIView *rootView = RCTBridgeSetupDefaultRootView(@"AwesomeTSProject", nil);
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];
   } else {
@@ -104,5 +105,10 @@
 }
 
 #endif
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+  UserModule *module = [NativeModuleToRNBridge moduleForClass:UserModule.class];
+  [module appDidLogin];
+}
 
 @end

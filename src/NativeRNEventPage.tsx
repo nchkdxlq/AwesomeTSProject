@@ -1,7 +1,14 @@
 import React from "react";
-import { Button, View, NativeModules } from "react-native";
+import { Button, View, NativeModules, NativeEventEmitter } from "react-native";
 
 const { UserModule } = NativeModules;
+
+const userEventEmitter = new NativeEventEmitter(UserModule);
+
+// 监听 native 的事件
+userEventEmitter.addListener("userDidLogin", (info) => {
+  console.log('UserModuleEvent', info);
+});
 
 const NativeRNEventPage = () => {
   return (

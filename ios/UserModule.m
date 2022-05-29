@@ -8,6 +8,8 @@
 #import "UserModule.h"
 #import <React/RCTBridgeModule.h>
 
+NSString * const kUserDidLogin = @"userDidLogin";
+
 @interface UserModule ()<RCTBridgeModule>
 
 @end
@@ -15,9 +17,19 @@
 
 @implementation UserModule
 
-
 /// 必须使用这个宏导出这个原生模块到rn
 RCT_EXPORT_MODULE();
+
+
+- (NSArray<NSString *> *)supportedEvents {
+  return @[kUserDidLogin];
+}
+
+/// 给 js 发送通知
+- (void)appDidLogin {
+  NSDictionary *info = @{@"userAd":@"luoquan", @"token":NSUUID.UUID.UUIDString};
+  [self sendEventWithName:kUserDidLogin body:info];
+}
 
 
 /// 使用 RCT_EXPORT_METHOD 把原生方法导出到js中,
@@ -29,6 +41,7 @@ RCT_EXPORT_METHOD(userDidUpdated:(NSDictionary *)info) {
 
 
 RCT_EXPORT_METHOD(getUserDetail:(NSString *)userAd resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+  NSLog(@"%@", self);
   if (userAd.length == 0) {
     NSString *code = @"404";
     NSString *message = @"UserAd is invalid";
