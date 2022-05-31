@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import ProfileRow from "./ProfileRow";
 import ProfileHeader from "./ProfileHeader";
 
@@ -27,18 +27,24 @@ const data = [
   },
 ]
 
-
 const UserProfile = () => {
   return (
-    <>
+    <ScrollView style={styles.wrapper}>
       <ProfileHeader />
-      <FlatList
-        data={data}
-        renderItem = { ({item}) => <ProfileRow title={item.title} desc={item.desc}/> } 
-      />
-    </>
+      {data.map(item => <ProfileRow title={item.title} desc={item.desc}/>)}
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+});
+
+
 
 export default UserProfile;
 

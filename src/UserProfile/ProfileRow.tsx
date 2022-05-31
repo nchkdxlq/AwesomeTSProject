@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet } from "react-native";
+import localImages from '@/constants/local-images';
 
 interface Props {
   /** 标题 */
@@ -10,21 +11,18 @@ interface Props {
 
 const ProfileRow: React.FC<Props> = ({ title, desc}) => {
   return (
-    <View style={styles.wrapper}>
+    <>
       <View style={styles.container} >
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.desc}>{desc}</Text>
+        <Image style={styles.direction} source={localImages.DIRECTION.RIGHT} />
       </View>
       <View style={styles.line} />
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
   container: {
     paddingTop: 18,
     paddingBottom: 18,
@@ -38,6 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#0f0f0f',
     marginRight: 30,
+    flexGrow: 1,
     // backgroundColor: 'blue',
   },
 
@@ -45,7 +44,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#484747',
     flexShrink: 1,
+    marginRight: 10,
     // backgroundColor: 'orange',
+  },
+
+  direction: {
+    height: 20,
+    width: 20,
+    alignSelf: 'center',
   },
 
   line: {
